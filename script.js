@@ -58,7 +58,5 @@ document.addEventListener('keydown', e => {
     clearDisplay();
   }
 
-  characters.forEach(character => {
-    digitCaharcter(e, character);
-  });
+  characters.forEach(character => digitCaharcter(e, character));
 });

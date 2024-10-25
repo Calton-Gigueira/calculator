@@ -43,7 +43,7 @@ const characters = [
   '.',
 ];
 
-const digitCaharcter = (e, character) => {
+const digitCharacter = (e, character) => {
   if (e.key === character) {
     display.value += character;
   }
@@ -58,5 +58,5 @@ document.addEventListener('keydown', e => {
     clearDisplay();
   }
 
-  characters.forEach(character => digitCaharcter(e, character));
+  characters.forEach(character => digitCharacter(e, character));
 });

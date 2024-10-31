@@ -1,33 +1,9 @@
 'use strict';
 
 const display = document.querySelector('#display');
-
-const displayResult = input => {
-  display.value += input;
-};
-
-const clearDisplay = () => {
-  if (display.value === 'Erro' || display.value === 'undefined') {
-    display.value = '';
-    return;
-  }
-
-  const values = display.value;
-  const newCharacter = values.slice(0, values.length - 1);
-  display.value = newCharacter;
-};
-
-const calculate = () => {
-  try {
-    if (display.value === '') {
-      display.value = '';
-      return;
-    }
-    display.value = eval(display.value);
-  } catch (error) {
-    display.value = 'Erro';
-  }
-};
+const calculateBtn = document.querySelector('.calculateBtn');
+const clearBtn = document.querySelector('.clearBtn');
+const charactersBtns = [...document.querySelectorAll('.characters')];
 
 const characters = [
   '1',
@@ -47,9 +23,45 @@ const characters = [
   '.',
 ];
 
+const displayResult = input => {
+  display.value += input;
+};
+
+const clearReturn = () => {
+  display.value = '';
+  return;
+};
+
+const clearDisplay = () => {
+  if (display.value === 'Erro' || display.value === 'undefined') {
+    clearReturn();
+  }
+
+  characters.forEach(character => {
+    if (display.value === `Erro${character}`) {
+      clearReturn();
+    }
+  });
+
+  const values = display.value;
+  const newCharacter = values.slice(0, values.length - 1);
+  display.value = newCharacter;
+};
+
+const calculate = () => {
+  try {
+    if (display.value === '') {
+      clearReturn();
+    }
+    display.value = eval(display.value);
+  } catch (error) {
+    display.value = 'Erro';
+  }
+};
+
 const digitCharacter = (e, character) => {
   if (e.key === character) {
-    display.value += character;
+    displayResult(character);
   }
 };
 
@@ -64,3 +76,17 @@ document.addEventListener('keydown', e => {
 
   characters.forEach(character => digitCharacter(e, character));
 });
+
+charactersBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    characters.forEach(character => {
+      if (character === btn.textContent) {
+        displayResult(character);
+      }
+    });
+  });
+});
+
+calculateBtn.addEventListener('click', calculate);
+
+clearBtn.addEventListener('click', clearDisplay);

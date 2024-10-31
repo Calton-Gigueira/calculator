@@ -7,7 +7,7 @@ const displayResult = input => {
 };
 
 const clearDisplay = () => {
-  if (display.value === 'Erro') {
+  if (display.value === 'Erro' || display.value === 'undefined') {
     display.value = '';
     return;
   }

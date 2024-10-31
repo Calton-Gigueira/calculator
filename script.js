@@ -19,6 +19,10 @@ const clearDisplay = () => {
 
 const calculate = () => {
   try {
+    if (display.value === '') {
+      display.value = '';
+      return;
+    }
     display.value = eval(display.value);
   } catch (error) {
     display.value = 'Erro';

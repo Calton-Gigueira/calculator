@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/png" />
   </head>
   <body>
     <section id="calculator">
       <input readonly id="display" placeholder="0.00" />
+      <section class="container">
+        <span class="menu__button">&#9776;</span>
+        <section class="symbols__container">
+          <!-- <span class="close__menu__button">&times;</span> -->
+          <section class="symbols">
+            <button class="symbol">[</button>
+            <button class="symbol">(</button>
+            <button class="symbol">)</button>
+            <button class="symbol">]</button>
+            <button class="symbol">%</button>
+            <button class="symbol">,</button>
+          </section>
+        </section>
+      </section>
       <section id="keys">
         <button class="operator characters">+</button>
         <button class="characters">7</button>

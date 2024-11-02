@@ -4,6 +4,9 @@ const display = document.querySelector('#display');
 const calculateBtn = document.querySelector('.calculateBtn');
 const clearBtn = document.querySelector('.clearBtn');
 const charactersBtns = [...document.querySelectorAll('.characters')];
+const menuButton = document.querySelector('.menu__button');
+const symbolsContainer = document.querySelector('.symbols__container');
+const symbolsBtns = [...document.querySelectorAll('.symbol')];
 
 const characters = [
   '1',
@@ -22,6 +25,8 @@ const characters = [
   '/',
   '.',
 ];
+
+const symbols = ['[', '(', ')', ']', '%', ','];
 
 const displayResult = input => {
   display.value += input;
@@ -64,6 +69,7 @@ document.addEventListener('keydown', e => {
   } else if (e.key === 'Backspace') clearDisplay();
 
   characters.forEach(character => digitCharacter(e, character));
+  symbols.forEach(symbol => digitCharacter(e, symbol));
 });
 
 charactersBtns.forEach(btn => {
@@ -77,3 +83,16 @@ charactersBtns.forEach(btn => {
 calculateBtn.addEventListener('click', calculate);
 
 clearBtn.addEventListener('click', clearDisplay);
+
+// MENU
+menuButton.addEventListener('click', () => {
+  symbolsContainer.classList.toggle('showSymbolsContrainer');
+});
+
+symbolsBtns.forEach(symbolBtn => {
+  symbolBtn.addEventListener('click', () => {
+    symbols.forEach(symbol => {
+      if (symbol === symbolBtn.textContent) displayResult(symbol);
+    });
+  });
+});

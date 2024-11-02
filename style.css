@@ -63,6 +63,50 @@ button:active {
   background-color: hsl(35, 100%, 75%);
 }
 
+.menu__button,
+.close__menu__button {
+  color: #fff;
+  font-size: 30px;
+  padding: 20px 40px;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+}
+
+.symbols__container {
+  height: 340px;
+  width: 140px;
+  position: absolute;
+  background-color: hsl(0, 0%, 50%);
+  border-bottom-left-radius: 15px;
+  transform: translateX(-100%);
+  transition: all 0.6s ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close__menu__button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.symbols {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.showSymbolsContrainer {
+  transform: translateX(0);
+  transition: all 0.6s ease;
+}
+
 @media screen and (max-width: 665px) {
   #calculator {
     width: 80vw;
@@ -72,5 +116,12 @@ button:active {
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 665px) {
+  .symbols__container {
+    height: 440px;
+    width: 220px;
   }
 }

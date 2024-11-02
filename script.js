@@ -33,14 +33,10 @@ const clearReturn = () => {
 };
 
 const clearDisplay = () => {
-  if (display.value === 'Erro' || display.value === 'undefined') {
-    clearReturn();
-  }
+  if (display.value === 'Erro' || display.value === 'undefined') clearReturn();
 
   characters.forEach(character => {
-    if (display.value === `Erro${character}`) {
-      clearReturn();
-    }
+    if (display.value === `Erro${character}`) clearReturn();
   });
 
   const values = display.value;
@@ -50,9 +46,8 @@ const clearDisplay = () => {
 
 const calculate = () => {
   try {
-    if (display.value === '') {
-      clearReturn();
-    }
+    if (display.value === undefined) clearReturn();
+
     display.value = eval(display.value);
   } catch (error) {
     display.value = 'Erro';
@@ -60,19 +55,13 @@ const calculate = () => {
 };
 
 const digitCharacter = (e, character) => {
-  if (e.key === character) {
-    displayResult(character);
-  }
+  if (e.key === character) displayResult(character);
 };
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
-    if (display.value !== '') {
-      calculate();
-    }
-  } else if (e.key === 'Backspace') {
-    clearDisplay();
-  }
+    if (display.value !== '') calculate();
+  } else if (e.key === 'Backspace') clearDisplay();
 
   characters.forEach(character => digitCharacter(e, character));
 });
@@ -80,9 +69,7 @@ document.addEventListener('keydown', e => {
 charactersBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     characters.forEach(character => {
-      if (character === btn.textContent) {
-        displayResult(character);
-      }
+      if (character === btn.textContent) displayResult(character);
     });
   });
 });
